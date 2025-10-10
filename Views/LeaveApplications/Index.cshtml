@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EmployeeManagement.Models.LeaveApplication>
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="container mt-4">
+
+    <h2 class="mb-4 fw-bold text-primary">
+        <i class="bi bi-calendar-check"></i> My Leave Applications
+    </h2>
+
+    @if (ViewBag.LeaveBalance != null)
+    {
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h6 class="text-muted">Total Leaves</h6>
+                        <p class="fs-2 fw-bold text-primary mb-0">@ViewBag.LeaveBalance.TotalLeaves</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h6 class="text-muted">Used Leaves</h6>
+                        <p class="fs-2 fw-bold text-danger mb-0">@ViewBag.LeaveBalance.UsedLeaves</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h6 class="text-muted">Remaining</h6>
+                        <p class="fs-2 fw-bold text-success mb-0">@ViewBag.LeaveBalance.RemainingLeaves</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="mt-0 header-title">Leave Applications</h4>
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Days</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var leave in Model)
+                        {
+                            <tr>
+                                <td>@leave.FromDate.ToShortDateString()</td>
+                                <td>@leave.ToDate.ToShortDateString()</td>
+                                <td>@leave.LeaveDays</td>
+                                <td>@leave.Reason</td>
+                                <td>
+                                    @if (leave.Status == "Pending")
+                                    {
+                                        <span class="badge badge-warning">Pending</span>
+                                    }
+                                    else if (leave.Status == "Approved")
+                                    {
+                                        <span class="badge badge-success">Approved</span>
+                                    }
+                                    else if (leave.Status == "Rejected")
+                                    {
+                                        <span class="badge badge-danger">Rejected</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

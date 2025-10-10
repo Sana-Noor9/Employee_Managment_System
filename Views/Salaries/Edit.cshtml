@@ -1,0 +1,60 @@
+﻿@model EmployeeManagement.Models.Salary
+
+@{
+    ViewData["Title"] = "Edit Salary";
+}
+
+<h2>Edit Salary</h2>
+<hr />
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="SalaryId" />
+
+    <!-- Employee -->
+    <div class="col-md-6">
+        <label asp-for="UserId" class="form-label">Employee</label>
+        <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserId"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <!-- Month -->
+    <div class="col-md-3">
+        <label asp-for="Month" class="form-label">Month</label>
+        <input asp-for="Month" class="form-control" />
+        <span asp-validation-for="Month" class="text-danger"></span>
+    </div>
+
+    <!-- Year -->
+    <div class="col-md-3">
+        <label asp-for="Year" class="form-label">Year</label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <!-- Basic Pay -->
+    <div class="col-md-4">
+        <label asp-for="BasicPay" class="form-label">Basic Pay</label>
+        <input asp-for="BasicPay" class="form-control" />
+        <span asp-validation-for="BasicPay" class="text-danger"></span>
+    </div>
+
+    <!-- Allowances -->
+    <div class="col-md-4">
+        <label asp-for="Allowances" class="form-label">Allowances</label>
+        <input asp-for="Allowances" class="form-control" />
+        <span asp-validation-for="Allowances" class="text-danger"></span>
+    </div>
+
+    <!-- Deductions -->
+    <div class="col-md-4">
+        <label asp-for="Deductions" class="form-label">Deductions</label>
+        <input asp-for="Deductions" class="form-control" />
+        <span asp-validation-for="Deductions" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>

@@ -1,0 +1,39 @@
+﻿@model EmployeeManagement.Models.Designation
+
+@{
+    ViewData["Title"] = "Designation Details";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm w-50">
+        <div class="card-body">
+            <h2 class="text-center fw-bold mb-4">Designation Details</h2>
+            <hr />
+
+            <dl class="row text-center">
+                <dt class="col-sm-4 fw-bold">
+                    @Html.DisplayNameFor(model => model.DesignationName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DesignationName)
+                </dd>
+
+                <dt class="col-sm-4 fw-bold">
+                    @Html.DisplayNameFor(model => model.Department)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Department.DepartmentName)
+                </dd>
+            </dl>
+
+            <div class="text-center mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.DesignationId" class="btn btn-warning me-2">
+                    <i class="bi bi-pencil"></i> Edit
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

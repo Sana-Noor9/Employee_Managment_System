@@ -1,0 +1,131 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Adjust page top spacing for dashboard layouts like OTIKA */
+    .page-content {
+        margin-top: 80px !important;
+    }
+
+    .card {
+        border-radius: 1rem !important;
+    }
+
+    .table thead th {
+        background-color: #007bff;
+        color: white;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f9f9f9;
+        transition: 0.2s ease-in-out;
+    }
+
+    .btn {
+        border-radius: 50px !important;
+    }
+
+    img.rounded-circle {
+        object-fit: cover;
+    }
+</style>
+
+<div class="container-fluid page-content">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+        <h2 class="fw-bold text-primary mb-2">All Employees</h2>
+        <button type="button" class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#reportsModal">
+            <i class="fa fa-chart-bar me-2"></i> View Reports & Analytics
+        </button>
+    </div>
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Department</th>
+                            <th>Designation</th>
+                            <th>Image</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var std in Model)
+                        {
+                            <tr>
+                                <td>@std.Id</td>
+                                <td class="fw-semibold">@std.FullName</td>
+                                <td>@std.Email</td>
+                                <td><span class="text-muted">@std.Password</span></td>
+                                <td>@std.Phone</td>
+                                <td><span class="badge bg-secondary">@std.Role</span></td>
+                                <td>@std.Department?.DepartmentName</td>
+                                <td>@std.Designations?.DesignationName</td>
+                                <td>
+                                    <img src="@Url.Content("~/users/" + std.UserImage)"
+                                         class="rounded-circle border border-2 shadow-sm"
+                                         height="60" width="60" />
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Account", new { id = std.Id })"
+                                       class="btn btn-sm btn-warning shadow-sm" title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Account", new { id = std.Id })"
+                                       class="btn btn-sm btn-danger shadow-sm" title="Delete">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<!-- Reports Modal -->
+
+<div class="modal fade" id="reportsModal" tabindex="-1" aria-labelledby="reportsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title fw-bold" id="reportsModalLabel">
+                    <i class="fa fa-chart-line me-2"></i> Reports & Analytics
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <p class="mb-4 text-muted">Select the report type for the previous month:</p>
+                <div class="d-grid gap-3">
+                    <a href="@Url.Action("LeaveReport", "Reports")" class="btn btn-outline-primary btn-lg shadow-sm">
+                        <i class="fa fa-calendar-check me-2"></i> Leave Report
+                    </a>
+                    <a href="@Url.Action("AttendanceReport", "Reports")" class="btn btn-outline-success btn-lg shadow-sm">
+                        <i class="fa fa-user-clock me-2"></i> Attendance Report
+                    </a>
+                    <a href="@Url.Action("PerformanceReport", "Reports")" class="btn btn-outline-warning btn-lg shadow-sm">
+                        <i class="fa fa-chart-pie me-2"></i> Performance Report
+                    </a>    
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center border-0 pb-4">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

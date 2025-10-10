@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Attendance>
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+<h2>My Attendance</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">@TempData["Message"]</div>
+}
+
+<form asp-action="PunchIn" method="post">
+    <button type="submit" class="btn btn-success">Punch In</button>
+</form>
+
+<form asp-action="PunchOut" method="post">
+    <button type="submit" class="btn btn-danger">Punch Out</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.Status</td>
+                <td>@(item.InTime?.ToString(@"hh\:mm") ?? "-")</td>
+                <td>@(item.OutTime?.ToString(@"hh\:mm") ?? "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>

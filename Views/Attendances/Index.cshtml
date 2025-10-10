@@ -1,0 +1,85 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Attendance Records</h3>
+        </div>
+        <div class="card-body">
+
+            <!-- ✅ Show success/error messages -->
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                    @TempData["Message"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered text-center align-middle">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>In Time</th>
+                            <th>Out Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.User.FullName</td>
+                                <td>@item.Date.ToShortDateString()</td>
+                                <td>
+                                    @if (item.Status == "Present")
+                                    {
+                                        <span class="badge bg-success">Present</span>
+                                    }
+                                    else if (item.Status == "Late")
+                                    {
+                                        <span class="badge bg-warning text-dark">Late</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Absent</span>
+                                    }
+                                </td>
+                                <td>@(item.InTime?.ToString(@"hh\:mm") ?? "N/A")</td>
+                                <td>@(item.OutTime?.ToString(@"hh\:mm") ?? "N/A")</td>
+                                <td>
+                                    <form asp-action="PunchIn" method="post" style="display:inline;">
+                                        <input type="hidden" name="userId" value="@item.UserId" />
+                                        <button class="btn btn-sm btn-success mb-1" type="submit"
+                                        @(item.InTime != null ? "disabled" : "")>
+                                            Punch In
+                                        </button>
+                                    </form>
+
+                                    <form asp-action="PunchOut" method="post" style="display:inline;">
+                                        <input type="hidden" name="userId" value="@item.UserId" />
+                                        <button class="btn btn-sm btn-warning" type="submit"
+                                        @(item.InTime == null || item.OutTime != null ? "disabled" : "")>
+                                            Punch Out
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

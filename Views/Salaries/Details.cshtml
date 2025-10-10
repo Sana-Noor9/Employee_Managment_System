@@ -1,0 +1,45 @@
+﻿@model EmployeeManagement.Models.Salary
+
+@{
+    ViewData["Title"] = "Salary Details";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="min-width: 350px; max-width: 500px; width: 100%;">
+        <h2 class="text-center mb-4">Salary Details</h2>
+
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Employee</dt>
+            <dd class="col-sm-8">@Model.User.FullName</dd>
+
+            <dt class="col-sm-4">Month</dt>
+            <dd class="col-sm-8">@Model.Month</dd>
+
+            <dt class="col-sm-4">Year</dt>
+            <dd class="col-sm-8">@Model.Year</dd>
+
+            <dt class="col-sm-4">Basic Pay</dt>
+            <dd class="col-sm-8">@Model.BasicPay.ToString("C")</dd>
+
+            <dt class="col-sm-4">Allowances</dt>
+            <dd class="col-sm-8">@Model.Allowances.ToString("C")</dd>
+
+            <dt class="col-sm-4">Deductions</dt>
+            <dd class="col-sm-8">@Model.Deductions.ToString("C")</dd>
+
+            <dt class="col-sm-4">Net Pay</dt>
+            <dd class="col-sm-8 text-success fw-bold">@Model.NetPay.ToString("C")</dd>
+        </dl>
+
+        <div class="d-flex justify-content-center mt-3">
+            <a class="btn btn-primary" asp-action="SalarySlip" asp-route-id="@Model.SalaryId">
+                Download Slip
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4 gap-2">
+            <a asp-action="Edit" asp-route-id="@Model.SalaryId" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>

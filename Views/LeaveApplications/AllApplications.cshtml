@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EmployeeManagement.Models.LeaveApplication>
+
+<div class="container my-5">
+    <div class="d-flex flex-column align-items-center" style="padding-top: 50px;">
+        <h2 class="mb-4">All Leave Applications</h2>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info w-100 text-center">@TempData["Message"]</div>
+        }
+
+        <div class="table-responsive w-100">
+            <table class="table table-bordered table-striped text-center align-middle">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>User</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Days</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var leave in Model)
+                    {
+                        <tr>
+                            <td>@leave.User?.UserName</td>
+                            <td>@leave.FromDate.ToShortDateString()</td>
+                            <td>@leave.ToDate.ToShortDateString()</td>
+                            <td>@leave.LeaveDays</td>
+                            <td>@leave.Reason</td>
+                            <td>@leave.Status</td>
+                            <td>
+                                @if (leave.Status == "Pending")
+                                {
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <form asp-action="ApproveLeave" method="post">
+                                            <input type="hidden" name="id" value="@leave.LeaveApplicationId" />
+                                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                        </form>
+                                        <form asp-controller="LeaveApplications" asp-action="RejectLeave" method="post">
+                                            <input type="hidden" name="id" value="@leave.LeaveApplicationId" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                        </form>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

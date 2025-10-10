@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin-top: 15px;
+        }
+
+        td, th {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <p>Dear {{UserName}},</p>
+
+    <p>We are pleased to inform you that your salary for <strong>{{Month}} {{Year}}</strong> has been processed successfully.</p>
+
+    <p>
+        <strong>Net Pay Amount:</strong> {{NetPay}}<br />
+        <strong>Date of Credit:</strong> {{Date}}
+    </p>
+
+    <table>
+        <tr>
+            <th>Earnings / Deductions</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>Basic Pay</td>
+            <td>{{BasicPay}}</td>
+        </tr>
+        <tr>
+            <td>Allowances</td>
+            <td>{{Allowances}}</td>
+        </tr>
+        <tr>
+            <td>Deductions</td>
+            <td>{{Deductions}}</td>
+        </tr>
+        <tr>
+            <th>Net Pay</th>
+            <th>{{NetPay}}</th>
+        </tr>
+    </table>
+
+    <p>You can log in to your employee portal to view your detailed salary slip.</p>
+
+    <p>If you have any questions or concerns, please contact the HR department.</p>
+
+    <p>Thank you for your continued dedication and contributions to the organization.</p>
+
+    <p>
+        Best regards,<br />
+        HR Department<br />
+        NovaTech Solutions
+    </p>
+</body>
+</html>

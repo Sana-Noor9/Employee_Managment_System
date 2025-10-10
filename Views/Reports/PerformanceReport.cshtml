@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EmployeeManagement.Models.ViewModels.PerformanceReportViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center fw-bold text-primary mb-4">
+        Performance Report - @ViewBag.Month
+    </h2>
+
+    ```
+    <div class="text-end mb-3">
+        <a href="@Url.Action("PerformanceReportPdf", "Reports")" class="btn btn-outline-danger">
+            <i class="fa fa-file-pdf"></i> Download PDF
+        </a>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary ms-2">
+            <i class="fa fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover text-center shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Employee</th>
+                <th>Total Evaluations</th>
+                <th>Average Score</th>
+                <th>Last Evaluation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Employee</td>
+                        <td>@item.TotalEvaluations</td>
+                        <td>@item.AverageScore</td>
+                                <td>@(item.LastEvaluationDate.HasValue
+    ? item.LastEvaluationDate.Value.ToString("dd MMM yyyy")
+    : "-")</td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-muted">No performance records found for @ViewBag.Month</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+  
+</div>

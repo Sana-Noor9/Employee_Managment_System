@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EmployeeManagement.Models.LeaveType>
+
+@{
+    ViewData["Title"] = "Leave Types";
+}
+<br/>
+<br/>
+<div class="container mt-5">
+    <h2 class="text-center">Leave Types</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">+ Add New Leave Type</a>
+
+    <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Leave Type</th>
+                <th>Max Days</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.MaxDays</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2" class="text-danger">No leave types found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

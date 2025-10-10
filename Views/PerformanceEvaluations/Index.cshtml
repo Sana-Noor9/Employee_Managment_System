@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EmployeeManagement.Models.PerformanceEvaluation>
+
+<div class="container mt-5" style="margin-top:100px !important;">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">All Performance Evaluations</h2>
+                <a asp-action="Create" class="btn btn-primary mt-2">➕ Add Evaluation</a>
+            </div>
+
+            <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Score</th>
+                        <th>Comments</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.User.FullName</td>
+                            <td>@item.Date.ToShortDateString()</td>
+                            <td>@item.Score</td>
+                            <td>@item.Comments</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.EvaluationId" class="btn btn-sm btn-warning">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.EvaluationId" class="btn btn-sm btn-info text-white">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.EvaluationId" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

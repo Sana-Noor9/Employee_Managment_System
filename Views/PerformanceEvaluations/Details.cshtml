@@ -1,0 +1,33 @@
+﻿@model EmployeeManagement.Models.PerformanceEvaluation
+
+@{
+    ViewData["Title"] = "Evaluation Details";
+}
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-sm" style="max-width: 700px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0 text-center">Evaluation Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-4">
+                <dt class="col-sm-4">Employee Name:</dt>
+                <dd class="col-sm-8">@Model.User.FullName ?? @Model.User.UserName</dd>
+
+                <dt class="col-sm-4">Evaluation Date:</dt>
+                <dd class="col-sm-8">@Model.Date.ToString("dd MMM yyyy")</dd>
+
+                <dt class="col-sm-4">Score:</dt>
+                <dd class="col-sm-8">@Model.Score</dd>
+
+                <dt class="col-sm-4">Comments:</dt>
+                <dd class="col-sm-8">@Model.Comments</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Edit" asp-route-id="@Model.EvaluationId" class="btn btn-warning">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

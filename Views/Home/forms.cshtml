@@ -1,0 +1,226 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+     <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-md-12 m-b-30">
+                                <!-- begin page title -->
+                                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                                    <div class="page-title mb-2 mb-sm-0">
+                                        <h1>Validation</h1>
+                                    </div>
+                                    <div class="ml-auto d-flex align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb p-0 m-b-0">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html"><i class="ti ti-home"></i></a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    Forms
+                                                </li>
+                                                <li class="breadcrumb-item active text-primary" aria-current="page">Validation</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <!-- end page title -->
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <!-- start Validation row -->
+                        <div class="row formavlidation-wrapper">
+                            <div class="col-xl-6">
+                                <div class="card card-statistics">
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Simple Form</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="signupForm" method="post" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label" for="fname">First name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="lname">Last name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="uname">Username</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="uname" name="uname" placeholder="Username" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="uemail">Email</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="uemail" name="uemail" placeholder="Email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="upassword">Password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="upassword" name="upassword" placeholder="Password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="uconfirm_password">Confirm password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="uconfirm_password" name="uconfirm_password" placeholder="Confirm password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="uagree" name="uagree">
+                                                    <label class="form-check-label" for="uagree">
+                                                        Please agree to our policy
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign
+                                                    up</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card card-statistics">
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Validation Icons</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="signupForm1" method="post" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label" for="firstname1">First name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="firstname1" name="firstname1" placeholder="First name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="lastname1">Last name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="lastname1" name="lastname1" placeholder="Last name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="username1">Username</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="username1" name="username1" placeholder="Username" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="email1">Email</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="email1" name="email1" placeholder="Email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="password1">Password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="confirm_password1">Confirm password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="confirm_password1" name="confirm_password1" placeholder="Confirm password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="agree1" name="agree1">
+                                                    <label class="form-check-label" for="agree1">
+                                                        Please agree to our policy
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary" name="signup1" value="Sign up">Sign
+                                                    up</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card card-statistics">
+                                    <div class="card-header">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Using feedback icons</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="signupForm3" method="post" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label" for="firstname">First name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="lastname">Last name</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="username">Username</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="email">Email</label>
+                                                <div class="mb-2">
+                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="password">Password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="confirm_password">Confirm password</label>
+                                                <div class="mb-2">
+                                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="agree" name="agree">
+                                                    <label class="form-check-label" for="agree">
+                                                        Please agree to our policy
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign
+                                                    up</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end Validation row  -->
+                    </div>
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end app-main -->
+            </div>

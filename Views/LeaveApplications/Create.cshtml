@@ -1,0 +1,55 @@
+﻿@model EmployeeManagement.Models.LeaveApplication
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow p-4" style="width: 500px;">
+        <h3 class="text-center mb-4">Apply for Leave</h3>
+
+        @if (TempData["Error"] != null)
+        {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+        }
+
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken() <!-- VERY IMPORTANT -->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @* <input asp-for="LeaveApplicationId" type="hidden" /> *@
+            <input type="hidden" asp-for="UserId" value="@TempData["UserId"]" />
+            <div class="form-group mb-3">
+                <label for="LeaveTypeId">Leave Type</label>
+                <select asp-for="LeaveTypeId" class="form-control" asp-items="@(new SelectList(ViewBag.LeaveTypes, "LeaveTypeId", "Name"))">
+                    <option value="">-- Select Leave Type --</option>
+                </select>
+                <span asp-validation-for="LeaveTypeId" class="text-danger"></span> <!-- ✅ CORRECT PLACE -->
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="FromDate">From Date</label>
+                <input asp-for="FromDate" type="date" class="form-control" />
+                <span asp-validation-for="FromDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="ToDate">To Date</label>
+                <input asp-for="ToDate" type="date" class="form-control" />
+                <span asp-validation-for="ToDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="Reason">Reason</label>
+                <span asp-validation-for="Reason" class="text-danger"></span>
+                <textarea asp-for="Reason" class="form-control" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Apply Leave</button>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

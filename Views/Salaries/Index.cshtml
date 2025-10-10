@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Salary>
+
+@{
+    ViewData["Title"] = "Salaries";
+}
+
+<h2 class="text-center mb-4">All Salaries</h2>
+
+<div class="d-flex justify-content-center mb-3">
+    <a asp-action="Create" class="btn btn-primary">Add Salary</a>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="table-responsive" style="max-width: 1000px; width: 100%;">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Employee</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Basic Pay</th>
+                    <th>Allowances</th>
+                    <th>Deductions</th>
+                    <th>Net Pay</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.User.FullName</td>
+                        <td>@item.Month</td>
+                        <td>@item.Year</td>
+                        <td>@item.BasicPay.ToString("C")</td>
+                        <td>@item.Allowances.ToString("C")</td>
+                        <td>@item.Deductions.ToString("C")</td>
+                        <td class="text-success fw-bold">@item.NetPay.ToString("C")</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.SalaryId" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.SalaryId" class="btn btn-sm btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.SalaryId" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

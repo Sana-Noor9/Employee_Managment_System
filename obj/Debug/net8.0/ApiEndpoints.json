@@ -1,0 +1,23 @@
+[
+  {
+    "ContainingType": "EmployeeManagement.Controllers.API.MessagesController",
+    "Method": "GetMessages",
+    "RelativePath": "api/Messages/{fromId}/{toId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fromId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "toId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

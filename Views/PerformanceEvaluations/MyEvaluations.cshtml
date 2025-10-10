@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EmployeeManagement.Models.PerformanceEvaluation>
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+   
+}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-sm p-4" style="max-width: 800px; width: 100%;">
+        <h3 class="text-center mb-4">⭐ My Performance Evaluations ⭐</h3>
+
+        <table class="table table-striped text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Date.ToShortDateString()</td>
+                        <td>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= item.Score)
+                                {
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa-regular fa-star text-muted"></i>
+                                }
+                            }
+                        </td>
+                        <td>@item.Comments</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

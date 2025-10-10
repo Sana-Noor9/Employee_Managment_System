@@ -1,0 +1,77 @@
+﻿@model EmployeeManagement.Models.Salary
+
+@{
+    ViewData["Title"] = "Add Salary";
+}
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-sm p-4" style="max-width: 700px; width: 100%;">
+        <h3 class="text-center mb-4">Add Salary</h3>
+
+        <form asp-action="Create" class="row g-3">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+            <!-- Employee -->
+            <div class="col-12">
+                <label asp-for="UserId" class="form-label">Employee</label>
+                <select asp-for="UserId" asp-items="ViewBag.UserId" class="form-select">
+                    <option value="">-- Select Employee --</option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <!-- Month & Year -->
+            <div class="col-md-6">
+                <label asp-for="Month" class="form-label">Month</label>
+                <select asp-for="Month" class="form-select">
+                    <option value="">-- Select Month --</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <span asp-validation-for="Month" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Year" class="form-label">Year</label>
+                <input asp-for="Year" class="form-control" type="number" placeholder="2025" min="2000" max="2100" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+            <!-- Salary Details -->
+            <div class="col-md-4">
+                <label asp-for="BasicPay" class="form-label">Basic Pay</label>
+                <input asp-for="BasicPay" class="form-control" type="number" step="0.01" placeholder="Enter Basic Salary" />
+                <span asp-validation-for="BasicPay" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="Allowances" class="form-label">Allowances</label>
+                <input asp-for="Allowances" class="form-control" type="number" step="0.01" placeholder="Enter Allowances" />
+                <span asp-validation-for="Allowances" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="Deductions" class="form-label">Deductions</label>
+                <input asp-for="Deductions" class="form-control" type="number" step="0.01" placeholder="Enter Deductions" />
+                <span asp-validation-for="Deductions" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="col-12 mt-3 d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
